@@ -389,7 +389,7 @@ public abstract class AbstractFileHeaderTransformer
         {
             buffer.append( getCommentStartTag() ).append( LINE_SEPARATOR );
         }
-        for ( String line : header.split( getLicenseLineSeparator ( header ) ) )
+        for ( String line : header.split( "\\r?\\n|\\r" ) )
         {
             buffer.append( getCommentLinePrefix() );
             buffer.append( line );
@@ -515,25 +515,5 @@ public abstract class AbstractFileHeaderTransformer
             result = str;
         }
         return result;
-    }
-    
-    private String getLicenseLineSeparator( String header ) {
-        if (header == null) {
-            return LINE_SEPARATOR;
-        }
-        
-        if (header.contains("\r\n")) {
-            return "\r\n";
-        }
-        
-        if (header.contains("\r")) {
-            return "\r";
-        }
-        
-        if (header.contains("\n")) {
-            return "\n";
-        }
-        
-        return LINE_SEPARATOR;
     }
 }
