@@ -389,7 +389,7 @@ public abstract class AbstractFileHeaderTransformer
         {
             buffer.append( getCommentStartTag() ).append( LINE_SEPARATOR );
         }
-        for ( String line : header.split( LINE_SEPARATOR + "" ) )
+        for ( String line : header.split( getLicenseLineSeparator ( header ) ) )
         {
             buffer.append( getCommentLinePrefix() );
             buffer.append( line );
